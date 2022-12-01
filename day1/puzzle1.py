@@ -15,26 +15,14 @@ def count_calories(original_list):
     return total_cals
 
 
-def find_max_value(totals):
-    max_cals = max(totals)
-    index = totals.index(max_cals)
-    return max_cals, index
-
 def find_top_three(total_cals):
-    top_three = []
-    count = 0
-    while count < 3:
-        top_three.append(max(total_cals))
-        total_cals.pop(total_cals.index(max(total_cals)))
-        count += 1
-    return sum(top_three)
+    total_cals.sort(reverse=True)
+    return sum(total_cals[:3])
+
 
 if __name__ == "__main__":
-    cals = count_calories(file_to_array("input.txt"))
+    totals = count_calories(file_to_array("input.txt"))
 
-    max_cals, index = find_max_value(cals)
+    print("Max cals ", max(totals),)
 
-    print("Cals ", max_cals, "Index ", index)
-
-    print("Top three", find_top_three(cals))
-
+    print("Top three", find_top_three(totals))
