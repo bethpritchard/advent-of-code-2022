@@ -8,8 +8,5 @@ def file_to_array(file):
     return array
 
 def read_lines(file):
-    array = []
     with open(file) as input_file:
-        for line in input_file:
-            array.append(line.strip('\n'))
-    return array
+        return input_file.read().splitlines()
